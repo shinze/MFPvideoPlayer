@@ -1,18 +1,18 @@
-MFP Accessible Video Player
-=======
+# MFP Accessible Video Player
+
 
     
-	The MFP Video Player is a project leading by the Multimedia France Production Ltd (a subsidiary of the French group France Télévisions) that conceived the player, in collaboration with Access42 Ltd that leaded the developments. The accessibility has been checked by the French Association BrailleNet that delivered the AccessiWeb Label testifying the MFP Video Player code is compliant with the Web Content Accessibility Guidelines (WCAG 2) at level double A (AA), and thus usable by any user regerdless one's abilities.
+The MFP Video Player is a project leading by the Multimedia France Production Ltd (a subsidiary of the French group France Télévisions) that conceived the player, in collaboration with Access42 Ltd that leaded the developments. The accessibility has been checked by the French Association BrailleNet that delivered the AccessiWeb Label testifying the MFP Video Player code is compliant with the Web Content Accessibility Guidelines (WCAG 2) at level double A (AA), and thus usable by any user regerdless one's abilities.
 
-    The MFP Video Player project is a fork of videojs <http://www.videojs.com/> to make it accessible and add some options useful for captionning and audiodescription.
+The MFP Video Player project is a fork of videojs <http://www.videojs.com/> to make it accessible and add some options useful for captionning and audiodescription.
 
-    The initial project (videojs) was under an Apache2 license, and the new project embed the JS Mootools library under the MIT license. Both licenses are compatible with the GPL 3 license, which is the license of the MFP video Player. See the FSF page about licenses compatibilities with the GPL <https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses> for more info.
+The initial project (videojs) was under an Apache2 license, and the new project embed the JS Mootools library under the MIT license. Both licenses are compatible with the GPL 3 license, which is the license of the MFP video Player. See the FSF page about licenses compatibilities with the GPL <https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses> for more info.
 	
-* * *
-Intégration du lecteur
-* * *
+## Intégration du lecteur
 
 Le code HTML du lecteur est limité à l'élément div avec un id "player" ; ci-dessous un code "type" :
+
+```
 <div id="player">
 	<video id="video" controls="controls" height="480" width="640">
 		<source src="client/medias/tontons_flingueurs_vo.mp4" type="video/mp4" />
@@ -22,9 +22,13 @@ Le code HTML du lecteur est limité à l'élément div avec un id "player" ; ci-
 	</video>
 	<audio src="client/medias/tontons_flingueurs_ad.mp3" preload="auto" hidden="hidden"></audio>
 </div>
+```
+
 Placez ce code à l'endroit souhaité dans la page où le lecteur doit être intégré.
 
 Enfin, dans l'élément head (entre les balises <head> et </head>) de la page, un appel à des ressources externes est requis :
+
+```
 <!-- VideoJS -->
 <link rel="stylesheet" href="client/scripts/video-js/video-js.css" type="text/css" />
 <!-- Personnalisation -->
@@ -47,11 +51,11 @@ Enfin, dans l'élément head (entre les balises <head> et </head>) de la page, u
 		});
 	}, false);
 </script>
+```
+
 Note : selon l'emplacement de ces ressources externes, les chemins (src des éléments script et href des éléments link) peuvent être changés. 
 
-* * *
-Mise en place des sous-titres
-* * *
+## Mise en place des sous-titres
 
 Dans l'élément video (entre les balises <video> et </video>), ajoutez pour chaque fichier de sous-titres la ligne de code suivante :
 <track kind="captions" label="" src="" srclang="" data-transcription="" />
@@ -68,9 +72,7 @@ Notes :
 - en l'absence de sous-titres, aucune ligne <track ... /> ne doit être ajoutée : le bouton ST sera alors absent.
 - en l'absence de transcript (à télécharger), data-transcription ne doit pas être renseigné : le lien "Télécharger le transcript" ne sera alors pas proposé.
 
-* * *
-Mise en place de l'audiodescription
-* * *
+## Mise en place de l'audiodescription
 
 Directement après l'élément video (balise </video>), ajoutez la ligne de code suivante :
 <audio src="" preload="auto" hidden="hidden"></audio>
